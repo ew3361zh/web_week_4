@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title></title>
+</head>
+<body>
+
+    <!-- Write your HTML content here -->
+    <p>Let's make a cool list of stuff!!!!!</p>
+    <input type="text" id="list-item">
+    <button id="add">Add to List</button>
+    <button id="clear">Clear List!</button>
+    <ul id="listy"></ul>
+
+<script>
+
+    // Write your script here
+    let textInput = document.querySelector('#list-item')
+    let addButton = document.querySelector('#add')
+    let coolList = document.querySelector('#listy')
+    let clearButton = document.querySelector('#clear')
+
+    let elementsInList = 0
+    let maxElements = 10
+
+    document.addEventListener('keyup', function() {
+        if (event.keyCode == 13) {
+            addButton.click()
+        }
+    })
+
+    addButton.addEventListener('click', function() {
+        // read text in input
+        let newText = textInput.value
+        
+        // validation that user has entered at least 1 character
+        if (newText.length > 50) {
+            alert('Your text entered needs to be fewer than 50 characters long')
+            return
+        } else if (newText.length <= 0) {
+            return
+        }
+
+        if (elementsInList >= maxElements) {
+            // alert shown to user if they've reached 10 elements in list
+            // and they try to add another
+            alert('no more elements can be added')
+            // reset text input box to blank (personal preference)
+            textInput.value = ''
+            // stop processing this function at this point
+            return
+        }
+
+        
+        // create a new li element
+        let newListItem = document.createElement('li')
+        // the li element text should be the text from the input
+        newListItem.innerHTML = newText
+        // add the new li element as a child of the ul element
+        coolList.appendChild(newListItem)
+        // clear the text of the input
+        textInput.value = ''
+
+        elementsInList++
+    })
+
+    clearButton.addEventListener('click', function() {
+        // reset text input box to blank
+        textInput.value = ''
+        // clear list
+        coolList.innerHTML = ''
+        // reset variable elementsInList to 0 once list is cleared
+        elementsInList = 0
+    })
+
+</script>
+
+</body>
+</html>
