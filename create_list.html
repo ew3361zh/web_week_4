@@ -14,15 +14,19 @@
 
 <script>
 
-    // Write your script here
+    // create variables for each button, the list, and the input
     let textInput = document.querySelector('#list-item')
     let addButton = document.querySelector('#add')
     let coolList = document.querySelector('#listy')
     let clearButton = document.querySelector('#clear')
 
+    // initialize the elements in list to 0 as a starting point
     let elementsInList = 0
+
+    // give a top end to how many list items we want
     let maxElements = 10
 
+    // allows enter key to be used as addButton click
     document.addEventListener('keyup', function() {
         if (event.keyCode == 13) {
             addButton.click()
